@@ -1,0 +1,42 @@
+Date: 2025-05-13
+
+Number of tires: 10
+
+Price per tire: $45.37
+
+Total price: $453.70
+
+Customer name: Hermann KPADONOU
+
+Customer address: Aboisso SOS
+
+Customer phone number: +2250707368863
+
+Date: 2025-05-13
+
+Number of tires: 5
+
+Price per tire: $45.37
+
+Total price: $226.85
+
+Customer name: Akassi Larguette
+
+Customer address: Paris 220 lgts
+
+Customer phone number: +33 122344488098
+
+Date: 2025-05-13
+
+Number of tires: 5
+
+Price per tire: $45.37
+
+Total price: $226.85
+
+Customer name: Belde Rasmatik
+
+Customer address: Ouaga 2000
+
+Customer phone number: +235 67890009876
+
