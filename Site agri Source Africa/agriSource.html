@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriSource Africa - Plateforme Agricole pour l'Afrique de l'Ouest</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2F855A',
+                        secondary: '#38A169',
+                        accent: '#F6E05E',
+                        dark: '#1A202C',
+                        light: '#F7FAFC',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #2F855A;
+            border-radius: 4px;
+        }
+
+        /* Mobile menu animation */
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+            }
+
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        .mobile-menu {
+            animation: slideIn 0.3s ease-out;
+        }
+
+        /* Pulse animation for important elements */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* Farmer card hover effect */
+        .farmer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .farmer-card {
+            transition: all 0.3s ease;
+        }
+
+        /* Language dropdown */
+        .language-dropdown:hover .language-options {
+            display: block;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 font-sans">
+    <!-- Navigation -->
+    <header class="bg-primary text-white sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-leaf text-2xl text-accent"></i>
+                <h1 class="text-xl font-bold">AgriSource Africa</h1>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex space-x-8">
+                <a href="#home" class="hover:text-accent transition">Accueil</a>
+                <a href="#formations" class="hover:text-accent transition">Formations</a>
+                <a href="#conseils" class="hover:text-accent transition">Conseils</a>
+                <a href="#marche" class="hover:text-accent transition">Marché</a>
+                <a href="#bibliotheque" class="hover:text-accent transition">Bibliothèque</a>
+            </nav>
+
+            <div class="hidden md:flex items-center space-x-4">
+                <div class="language-dropdown relative">
+                    <button class="flex items-center space-x-1">
+                        <i class="fas fa-globe"></i>
+                        <span>FR</span>
+                        <i class="fas fa-chevron-down text-xs"></i>
+                    </button>
+                    <div
+                        class="language-options hidden absolute right-0 mt-2 w-20 bg-white text-dark rounded shadow-lg py-1 z-50">
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">Français</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">English</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">Wolof</a>
+                    </div>
+                </div>
+                <a href="#login" class="bg-secondary px-4 py-2 rounded-lg hover:bg-green-600 transition">Connexion</a>
+                <a href="#register"
+                    class="border border-white px-4 py-2 rounded-lg hover:bg-white hover:text-primary transition">Inscription</a>
+            </div>
+
+            <!-- Mobile menu button -->
+            <button id="mobile-menu-button" class="md:hidden text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu"
+            class="mobile-menu hidden md:hidden fixed inset-y-0 right-0 w-64 bg-primary text-white p-4 transform transition-transform duration-300 ease-in-out z-50">
+            <div class="flex justify-between items-center mb-8">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-leaf text-2xl text-accent"></i>
+                    <h1 class="text-xl font-bold">AgriSource Africa</h1>
+                </div>
+                <button id="close-mobile-menu" class="text-2xl">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <nav class="flex flex-col space-y-4">
+                <a href="#home" class="hover:text-accent transition py-2 border-b border-gray-700">Accueil</a>
+                <a href="#formations" class="hover:text-accent transition py-2 border-b border-gray-700">Formations</a>
+                <a href="#conseils" class="hover:text-accent transition py-2 border-b border-gray-700">Conseils</a>
+                <a href="#marche" class="hover:text-accent transition py-2 border-b border-gray-700">Marché</a>
+                <a href="#bibliotheque"
+                    class="hover:text-accent transition py-2 border-b border-gray-700">Bibliothèque</a>
+            </nav>
+
+            <div class="mt-8 flex flex-col space-y-4">
+                <div class="language-dropdown relative">
+                    <button class="flex items-center space-x-1 w-full justify-between">
+                        <div class="flex items-center space-x-1">
+                            <i class="fas fa-globe"></i>
+                            <span>FR</span>
+                        </div>
+                        <i class="fas fa-chevron-down text-xs"></i>
+                    </button>
+                    <div class="language-options hidden mt-2 w-full bg-white text-dark rounded shadow-lg py-1 z-50">
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">Français</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">English</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">Wolof</a>
+                    </div>
+                </div>
+                <a href="#login"
+                    class="bg-secondary px-4 py-2 rounded-lg hover:bg-green-600 transition text-center">Connexion</a>
+                <a href="#register"
+                    class="border border-white px-4 py-2 rounded-lg hover:bg-white hover:text-primary transition text-center">Inscription</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="bg-gradient-to-r from-primary via-secondary to-accent text-white py-16">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-8 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Boostez votre agriculture en Afrique de l'Ouest</h1>
+                <p class="text-xl mb-6">Plateforme intégrée pour l'apprentissage, l'échange et la commercialisation des
+                    produits agricoles.</p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#formations"
+                        class="bg-white text-primary font-bold px-6 py-3 rounded-lg hover:bg-gray-100 transition text-center pulse">Explorer
+                        les formations</a>
+                    <a href="#marche"
+                        class="border-2 border-white font-bold px-6 py-3 rounded-lg hover:bg-white hover:text-primary transition text-center">Accéder
+                        au marché</a>
+                </div>
+            </div>
+            <div class="md:w-1/2">
+                <img src="https://images.unsplash.com/photo-1545912452-8aea7e25a3d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                    alt="Agriculteur ouest-africain" class="rounded-lg shadow-2xl w-full object-cover">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-dark">Nos Services Principaux</h2>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-light p-6 rounded-lg shadow-md hover:shadow-xl transition">
+                    <div class="text-primary text-4xl mb-4">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-dark">Formations Agricoles</h3>
+                    <p class="text-gray-600">Accédez à des formations adaptées aux conditions locales, dispensées par
+                        des experts.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-light p-6 rounded-lg shadow-md hover:shadow-xl transition">
+                    <div class="text-primary text-4xl mb-4">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-dark">Conseils d'Experts</h3>
+                    <p class="text-gray-600">Posez vos questions et recevez des réponses personnalisées de
+                        professionnels.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-light p-6 rounded-lg shadow-md hover:shadow-xl transition">
+                    <div class="text-primary text-4xl mb-4">
+                        <i class="fas fa-shopping-basket"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-dark">Marché en Ligne</h3>
+                    <p class="text-gray-600">Vendez ou achetez des produits agricoles directement, sans intermédiaires.
+                    </p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="bg-light p-6 rounded-lg shadow-md hover:shadow-xl transition">
+                    <div class="text-primary text-4xl mb-4">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-dark">Ressources Techniques</h3>
+                    <p class="text-gray-600">Consultez notre bibliothèque complète sur les cultures vivrières locales.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Training Section -->
+    <section id="formations" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-4 text-dark">Formations Agricoles</h2>
+            <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">Apprenez les meilleures pratiques adaptées aux
+                réalités ouest-africaines.</p>
+
+            <div class="flex justify-center mb-8">
+                <div class="inline-flex rounded-lg shadow-sm">
+                    <button type="button"
+                        class="px-6 py-3 text-sm font-medium rounded-l-lg bg-primary text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                        Toutes
+                    </button>
+                    <button type="button"
+                        class="px-6 py-3 text-sm font-medium bg-white text-dark hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white">
+                        Gratuites
+                    </button>
+                    <button type="button"
+                        class="px-6 py-3 text-sm font-medium rounded-r-lg bg-white text-dark hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white">
+                        Payantes
+                    </button>
+                </div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Training Card 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition">
+                    <img src="https://images.unsplash.com/photo-1518977676601-b53fcc75ef1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                        alt="Culture du mil" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span
+                            class="inline-block px-2 py-1 text-xs font-semibold text-green-800 bg-green-100 rounded-full mb-2">Nouveau</span>
+                        <h3 class="text-xl font-semibold mb-2 text-dark">Techniques modernes de culture du mil</h3>
+                        <p class="text-gray-600 mb-4">Apprenez les méthodes pour augmenter votre rendement de mil avec
+                            moins d'eau.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="flex items-center text-yellow-500">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span class="text-gray-600 ml-2">(128)</span>
+                            </span>
+                            <span class="font-bold text-primary">Gratuit</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Training Card 2 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition">
+                    <img src="https://images.unsplash.com/photo-1586771107445-d3ca888c6f8d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                        alt="Agriculture biologique" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="mb-2">
+                            <span
+                                class="inline-block px-2 py-1 text-xs font-semibold text-purple-800 bg-purple-100 rounded-full">Populaire</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-dark">Agriculture biologique en zone sahélienne</h3>
+                        <p class="text-gray-600 mb-4">Techniques alternatives pour produire sans produits chimiques et
+                            préserver votre sol.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="flex items-center text-yellow-500">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span class="text-gray-600 ml-2">(342)</span>
+                            </span>
+                            <span class="font-bold text-primary">12 000 FCFA</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Training Card 3 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition">
+                    <img src="https://images.unsplash.com/photo-1625245000734-db37a187b739?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                        alt="Gestion post-récolte" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="mb-2">
+                            <span
+                                class="inline-block px-2 py-1 text-xs font-semibold text-blue-800 bg-blue-100 rounded-full">À
+                                venir</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-dark">Gestion post-récolte et stockage</h3>
+                        <p class="text-gray-600 mb-4">Apprenez comment éviter les pertes après récolte et optimiser
+                            votre stockage.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="flex items-center text-yellow-500">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span class="text-gray-600 ml-2">(78)</span>
+                            </span>
+                            <span class="font-bold text-primary">8 500 FCFA</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-10">
+                <a href="#"
+                    class="inline-block bg-primary text-white px-6 py-3 rounded-lg hover:bg-green-700 transition">
+                    Voir toutes les formations <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expert Advice Section -->
+    <section id="conseils" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-4 text-dark">Conseils & Communauté</h2>
+            <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">Échangez avec d'autres agriculteurs et obtenez
+                des réponses d'experts.</p>
+
+            <div class="grid md:grid-cols-2 gap-8 mb-10">
+                <!-- Forum Section -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-comments text-2xl text-primary mr-3"></i>
+                        <h3 class="text-xl font-semibold text-dark">Forum Communautaire</h3>
+                    </div>
+
+                    <div class="space-y-4">
+                        <!-- Forum Thread 1 -->
+                        <div class="border-b border-gray-200 pb-4">
+                            <div class="flex justify-between items-start mb-2">
+                                <a href="#" class="font-medium text-dark hover:text-primary">Lutte contre les criquets
+                                    sans pesticides</a>
+                                <span class="text-sm text-gray-500">2h</span>
+                            </div>
+                            <p class="text-sm text-gray-600 mb-2">Je cherche des méthodes naturelles pour protéger mon
+                                champ de mil contre les criquets...</p>
+                            <div class="flex items-center text-sm text-gray-500">
+                                <i class="far fa-comment mr-1"></i>
+                                <span>14 réponses</span>
+                                <span class="mx-2">•</span>
+                                <span>Culture du mil</span>
+                            </div>
+                        </div>
+
+                        <!-- Forum Thread 2 -->
+                        <div class="border-b border-gray-200 pb-4">
+                            <div class="flex justify-between items-start mb-2">
+                                <a href="#" class="font-medium text-dark hover:text-primary">Quelle variété de manioc
+                                    résistante à la sécheresse ?</a>
+                                <span class="text-sm text-gray-500">1j</span>
+                            </div>
+                            <p class="text-sm text-gray-600 mb-2">Dans notre zone, les pluies sont devenues
+                                irrégulières. Je cherche une variété qui...</p>
+                            <div class="flex items-center text-sm text-gray-500">
+                                <i class="far fa-comment mr-1"></i>
+                                <span>8 réponses</span>
+                                <span class="mx-2">•</span>
+                                <span>Culture du manioc</span>
+                            </div>
+                        </div>
+
+                        <!-- Forum Thread 3 -->
+                        <div class="pb-2">
+                            <div class="flex justify-between items-start mb-2">
+                                <a href="#" class="font-medium text-dark hover:text-primary">Techniques d'irrigation
+                                    économes pour maraîchage</a>
+                                <span class="text-sm text-gray-500">3j</span>
+                            </div>
+                            <p class="text-sm text-gray-600 mb-2">Je m'installe en maraîchage mais j'ai peu d'eau
+                                disponible. Quelles solutions...</p>
+                            <div class="flex items-center text-sm text-gray-500">
+                                <i class="far fa-comment mr-1"></i>
+                                <span>22 réponses</span>
+                                <span class="mx-2">•</span>
+                                <span>Maraîchage</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#" class="inline-block mt-4 text-primary hover:underline">
+                        Voir plus de discussions <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+
+                <!-- Ask Expert Section -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-user-tie text-2xl text-primary mr-3"></i>
+                        <h3 class="text-xl font-semibold text-dark">Questions aux Experts</h3>
+                    </div>
+
+                    <div class="space-y-4 mb-4">
+                        <!-- Expert Card 1 -->
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <div class="flex items-center mb-2">
+                                <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Expert"
+                                    class="w-10 h-10 rounded-full mr-3">
+                                <div>
+                                    <h4 class="font-semibold">Dr. Aïssatou Diallo</h4>
+                                    <p class="text-xs text-gray-600">Agronome spécialiste cultures céréalières</p>
+                                </div>
+                            </div>
+                            <p class="text-sm mb-2">Réponse à: <a href="#" class="text-primary">"Mon mil jaunit après 3
+                                    semaines"</a></p>
+                            <p class="text-sm text-gray-600 line-clamp-2">Il s'agit probablement d'une carence en fer ou
+                                d'un excès d'eau. Je recommande d'abord d'examiner le drainage de votre sol...</p>
+                            <a href="#" class="text-xs text-primary hover:underline">Lire la réponse complète</a>
+                        </div>
+
+                        <!-- Expert Card 2 -->
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <div class="flex items-center mb-2">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Expert"
+                                    class="w-10 h-10 rounded-full mr-3">
+                                <div>
+                                    <h4 class="font-semibold">Mamadou Diop</h4>
+                                    <p class="text-xs text-gray-600">Spécialiste en agroforesterie</p>
+                                </div>
+                            </div>
+                            <p class="text-sm mb-2">Réponse à: <a href="#" class="text-primary">"Quels arbres planter
+                                    autour des champs ?"</a></p>
+                            <p class="text-sm text-gray-600 line-clamp-2">Pour votre zone, je recommande des espèces
+                                comme le Faidherbia albida qui améliore la fertilité du sol tout en offrant de
+                                l'ombre...</p>
+                            <a href="#" class="text-xs text-primary hover:underline">Lire la réponse complète</a>
+                        </div>
+                    </div>
+
+                    <div class="mt-6">
+                        <h4 class="font-medium mb-3 text-dark">Poser votre question</h4>
+                        <form>
+                            <div class="mb-3">
+                                <select
+                                    class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                                    <option>Sélectionnez un expert</option>
+                                    <option>Dr. Aïssatou Diallo - Céréales</option>
+                                    <option>Mamadou Diop - Agroforesterie</option>
+                                    <option>Autres experts disponibles</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <input type="text" placeholder="Sujet de votre question"
+                                    class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            <div class="mb-3">
+                                <textarea rows="3" placeholder="Détails de votre question..."
+                                    class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-gray-600">
+                                    <i class="fas fa-info-circle mr-1"></i> Certains experts répondent gratuitement
+                                </span>
+                                <button type="submit"
+                                    class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-green-700">Envoyer</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blog Articles -->
+            <div class="mt-12">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-2xl font-semibold text-dark">Articles et Conseils Pratiques</h3>
+                    <a href="#" class="text-primary hover:underline">Voir tous les articles</a>
+                </div>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Article 1 -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition">
+                        <img src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                            alt="Techniques de compostage" class="w-full h-48 object-cover">
+                        <div class="p-5">
+                            <span class="text-xs font-semibold text-gray-500">COMPOSTAGE • 15 MAI 2023</span>
+                            <h4 class="text-lg font-semibold my-2 text-dark">Faire son compost avec des matériaux locaux
+                            </h4>
+                            <p class="text-sm text-gray-600 mb-3 line-clamp-2">Découvrez comment transformer vos déchets
+                                agricoles et ménagers en engrais naturel efficace avec des techniques adaptées à
+                                l'Afrique de l'Ouest.</p>
+                            <a href="#" class="text-sm text-primary hover:underline">Lire l'article →</a>
+                        </div>
+                    </div>
+
+                    <!-- Article 2 -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition">
+                        <img src="https://images.unsplash.com/photo-1559138443-1d6e142fcbcb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                            alt="Cultures résistantes" class="w-full h-48 object-cover">
+                        <div class="p-5">
+                            <span class="text-xs font-semibold text-gray-500">CHANGEMENT CLIMATIQUE • 3 MAI 2023</span>
+                            <h4 class="text-lg font-semibold my-2 text-dark">5 cultures résistantes à la sécheresse</h4>
+                            <p class="text-sm text-gray-600 mb-3 line-clamp-2">Face aux changements climatiques, voici
+                                les cultures les plus adaptées aux conditions de sécheresse en zone sahélienne.</p>
+                            <a href="#" class="text-sm text-primary hover:underline">Lire l'article →</a>
+                        </div>
+                    </div>
+
+                    <!-- Article 3 -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition">
+                        <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                            alt="Marchés locaux" class="w-full h-48 object-cover">
+                        <div class="p-5">
+                            <span class="text-xs font-semibold text-gray-500">COMMERCIALISATION • 25 AVR. 2023</span>
+                            <h4 class="text-lg font-semibold my-2 text-dark">Comment bien vendre ses produits au marché
+                                local ?</h4>
+                            <p class="text-sm text-gray-600 mb-3 line-clamp-2">Nos conseils pour maximiser vos profits
+                                sur les marchés ouest-africains sans intermédiaires abusifs.</p>
+                            <a href="#" class="text-sm text-primary hover:underline">Lire l'article →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marketplace Section -->
+    <section id="marche" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-4 text-dark">Marché Agricole</h2>
+            <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">Trouvez des acheteurs ou des fournisseurs de
+                produits agricoles locaux.</p>
+
+            <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                    <div class="mb-4 md:mb-0">
+                        <h3 class="text-xl font-semibold text-dark mb-2">Que recherchez-vous ?</h3>
+                        <p class="text-gray-600">Parcourez notre marché ou créez votre annonce en quelques clics.</p>
+                    </div>
+                    <div class="flex space-x-3">
+                        <a href="#"
+                            class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-green-700 flex items-center">
+                            <i class="fas fa-search mr-2"></i> Trouver des produits
+                        </a>
+                        <a href="#"
+                            class="border border-primary text-primary px-4 py-2 rounded-lg hover:bg-primary hover:text-white flex items-center">
+                            <i class="fas fa-plus mr-2"></i> Vendre mes produits
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                <button class="px-4 py-2 bg-primary text-white rounded-lg">Tous</button>
+                <button class="px-4 py-2 bg-white border border-gray-300 rounded-lg hover:bg-gray-50">Céréales</button>
+                <button
+                    class="px-4 py-2 bg-white border border-gray-300 rounded-lg hover:bg-gray-50">Tubercules</button>
+                <button
+                    class="px-4 py-2 bg-white border border-gray-300 rounded-lg hover:bg-gray-50">Légumineuses</button>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Product Card 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition farmer-card">
+                    <img src="https://images.unsplash.com/photo-1618541989874-8d6a28e72495?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                        alt="Mil" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-1 text-dark">Mil rouge - Premium</h3>
+                        <p class="text-gray-600 text-sm mb-2">5 tonnes disponibles - Dakar</p>
+                        <div class="flex items-center mb-2">
+                            <span class="flex items-center text-yellow-500 mr-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </span>
+                            <span class="text-xs text-gray-500">(12 avis)</span>
+                        </div>
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="font-bold text-primary">450 FCFA/kg</span>
+                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Disponible</span>
+                        </div>
+                        <button
+                            class="w-full bg-secondary text-white py-2 rounded-lg hover:bg-green-600 transition flex items-center justify-center">
+                            <i class="fas fa-shopping-cart mr-2"></i> Contacter
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition farmer-card">
+                    <img src="https://images.unsplash.com/photo-1563638796434-5c79a3005b0f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                        alt="Igname" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-1 text-dark">Igname jaune <span
+                                class="text-sm font-normal">(variété locale)</span></h3>
+                        <p class="text-gray-600 text-sm mb-2">2.5 tonnes - Thiès</p>
+                        <div class="flex items-center mb-2">
+                            <span class="flex items-center text-yellow-500 mr-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <i class="far fa-star"></i>
+                            </span>
+                            <span class="text-xs text-gray-500">(7 avis)</span>
+                        </div>
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="font-bold text-primary">375 FCFA/kg</span>
+                            <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded">Dernières
+                                quantités</span>
+                        </div>
+                        <button
+                            class="w-full bg-secondary text-white py-2 rounded-lg hover:bg-green-600 transition flex items-center justify-center">
+                            <i class="fas fa-shopping-cart mr-2"></i> Contacter
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product Card 3 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition farmer-card">
+                    <img src="https://images.unsplash.com/photo-1597362925123-77861d3fbac7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                        alt="Niébé" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-1 text-dark">Niébé Bio</h3>
+                        <p class="text-gray-600 text-sm mb-2">800 kg - Saint-Louis</p>
+                        <div class="flex items-center mb-2">
+                            <span class="flex items-center text-yellow-500 mr-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </span>
+                            <span class="text-xs text-gray-500">(24 avis)</span>
+                        </div>
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="font-bold text-primary">600 FCFA/kg</span>
+                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Disponible</span>
+                        </div>
+                        <button
+                            class="w-full bg-secondary text-white py-2 rounded-lg hover:bg-green-600 transition flex items-center justify-center">
+                            <i class="fas fa-shopping-cart mr-2"></i> Contacter
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product Card 4 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition farmer-card">
+                    <img src="https://images.unsplash.com/photo-1536300007881-7e482242baa5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                        alt="Arachides" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-1 text-dark">Arachides non décortiquées</h3>
+                        <p class="text-gray-600 text-sm mb-2">1.2 tonnes - Kaolack</p>
+                        <div class="flex items-center mb-2">
+                            <span class="flex items-center text-yellow-500 mr-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </span>
+                            <span class="text-xs text-gray-500">(3 avis)</span>
+                        </div>
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="font-bold text-primary">525 FCFA/kg</span>
+                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Disponible</span>
+                        </div>
+                        <button
+                            class="w-full bg-secondary text-white py-2 rounded-lg hover:bg-green-600 transition flex items-center justify-center">
+                            <i class="fas fa-shopping-cart mr-2"></i> Contacter
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-10">
+                <a href="#"
+                    class="inline-block bg-primary text-white px-6 py-3 rounded-lg hover:bg-green-700 transition">
+                    Voir toutes les offres <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Crop Library Section -->
+    <section id="bibliotheque" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-4 text-dark">Bibliothèque des Cultures</h2>
+            <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">Accédez à des fiches techniques complètes sur
+                les principales cultures vivrières d'Afrique de l'Ouest.</p>
+
+            <div class="mb-8 flex justify-center">
+                <div class="relative w-full max-w-xl">
+                    <input type="text" placeholder="Rechercher une culture (ex: mil, arachide, manioc...)"
+                        class="w-full p-4 pl-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                    <i class="fas fa-search absolute left-4 top-4 text-gray-400"></i>
+                </div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Crop Card 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition">
+                    <img src="https://images.unsplash.com/photo-1618541989874-8d6a28e72495?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                        alt="Mil" class="w-full h-40 object-cover">
+                    <div class="p-5">
+                        <h3 class="text-lg font-semibold mb-2 text-dark">Mil</h3>
+                        <p class="text-sm text-gray-600 mb-3">Pennisetum glaucum</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Résistant à la
+                                sécheresse</span>
+                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">Culture céréalière</span>
+                        </div>
+                        <a href="#" class="text-primary font-medium hover:underline flex items-center">
+                            Voir fiche technique <i class="fas fa-chevron-right ml-1 text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Crop Card 2 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition">
+                    <img src="https://images.unsplash.com/photo-1589927986086-c7bf5c0cba5b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                        alt="Sorgho" class="w-full h-40 object-cover">
+                    <div class="p-5">
+                        <h3 class="text-lg font-semibold mb-2 text-dark">Sorgho</h3>
+                        <p class="text-sm text-gray-600 mb-3">Sorghum bicolor</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Adapté aux sols
+                                pauvres</span>
+                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">Culture céréalière</span>
+                        </div>
+                        <a href="#" class="text-primary font-medium hover:underline flex items-center">
+                            Voir fiche technique <i class="fas fa-chevron-right ml-1 text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Crop Card 3 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition">
+                    <img src="https://images.unsplash.com/photo-1624398755210-439f9665a126?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                        alt="Manioc" class="w-full h-40 object-cover">
+                    <div class="p-5">
+                        <h3 class="text-lg font-semibold mb-2 text-dark">Manioc</h3>
+                        <p class="text-sm text-gray-600 mb-3">Manihot esculenta</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">Tubercule</span>
+                            <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">Riche en amidon</span>
+                        </div>
+                        <a href="#" class="text-primary font-medium hover:underline flex items-center">
+                            Voir fiche technique <i class="fas fa-chevron-right ml-1 text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Crop Card 4 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition">
+                    <img src="https://images.unsplash.com/photo-1563638796434-5c79a3005b0f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                        alt="Igname" class="w-full h-40 object-cover">
+                    <div class="p-5">
+                        <h3 class="text-lg font-semibold mb-2 text-dark">Igname</h3>
+                        <p class="text-sm text-gray-600 mb-3">Dioscorea spp.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">Tubercule</span>
+                            <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded">Haute valeur
+                                énergétique</span>
+                        </div>
+                        <a href="#" class="text-primary font-medium hover:underline flex items-center">
+                            Voir fiche technique <i class="fas fa-chevron-right ml-1 text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-10">
+                <a href="#"
+                    class="inline-block bg-primary text-white px-6 py-3 rounded-lg hover:bg-green-700 transition">
+                    Explorer toutes les cultures <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-dark">Ce qu'ils disent de AgriSource Africa</h2>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Aminata"
+                            class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold">Aminata Diop</h4>
+                            <p class="text-xs text-gray-600">Agricultrice, Thiès</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"Grâce aux formations sur TerangaAgri, j'ai pu améliorer mon rendement
+                        de mil de 30%. Les conseils des experts sont vraiment adaptés à notre réalité."</p>
+                    <div class="flex text-yellow-500">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/men/52.jpg" alt="Mamadou"
+                            class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold">Mamadou Ndiaye</h4>
+                            <p class="text-xs text-gray-600">Formateur agronome</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"Cette plateforme me permet d'atteindre plus d'agriculteurs avec mes
+                        formations. L'interface est simple et les paiements mobiles très pratiques."</p>
+                    <div class="flex text-yellow-500">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Fatou"
+                            class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold">Fatou Bintou Fall</h4>
+                            <p class="text-xs text-gray-600">Commerçante, Dakar</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"Le marché de TerangaAgri m'a permis de trouver des fournisseurs
+                        locaux fiables. Je commande maintenant directement aux producteurs sans intermédiaires."</p>
+                    <div class="flex text-yellow-500">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="py-16 bg-primary text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-4">Prêt à transformer votre activité agricole ?</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Rejoignez notre communauté de formateurs, agriculteurs et
+                acheteurs dès aujourd'hui.</p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <a href="#register"
+                    class="bg-white text-primary font-bold px-8 py-3 rounded-lg hover:bg-gray-100 transition">S'inscrire
+                    maintenant</a>
+                <a href="#contact"
+                    class="border-2 border-white font-bold px-8 py-3 rounded-lg hover:bg-white hover:text-primary transition">Nous
+                    contacter</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- About -->
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-leaf text-2xl text-accent"></i>
+                        <h3 class="text-xl font-bold">AgriSource Africa</h3>
+                    </div>
+                    <p class="text-gray-300 mb-4">AgriSource Africa - Plateforme dédiée au développement de
+                        l'agriculture ouest-africaine par le partage de connaissances et la facilitation des échanges.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-accent transition"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-accent transition"><i
+                                class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-accent transition"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-accent transition"><i
+                                class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Liens rapides</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-300 hover:text-accent transition">Accueil</a></li>
+                        <li><a href="#formations" class="text-gray-300 hover:text-accent transition">Formations</a></li>
+                        <li><a href="#conseils" class="text-gray-300 hover:text-accent transition">Conseils & Forum</a>
+                        </li>
+                        <li><a href="#marche" class="text-gray-300 hover:text-accent transition">Marché Agricole</a>
+                        </li>
+                        <li><a href="#bibliotheque" class="text-gray-300 hover:text-accent transition">Bibliothèque</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Resources -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Ressources</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-accent transition">FAQ</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-accent transition">Blog</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-accent transition">Partenaires</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-accent transition">Téléchargements</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-accent transition">Mentions légales</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contactez-nous</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-3 text-accent"></i>
+                            <span class="text-gray-300">Dakar, Sénégal</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-3 text-accent"></i>
+                            <span class="text-gray-300">+221 33 123 45 67</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-accent"></i>
+                            <span class="text-gray-300">contact@agrisource-africa.com</span>
+                        </li>
+                    </ul>
+
+                    <h5 class="font-semibold mt-6 mb-2">Solutions de paiement</h5>
+                    <div class="flex space-x-3">
+                        <i class="fab fa-cc-orange text-2xl text-orange-500"></i>
+                        <i class="fab fa-cc-mtn text-2xl text-yellow-500"></i>
+                        <i class="fas fa-mobile-alt text-2xl text-blue-500"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 AgriSource Africa. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMobileMenu = document.getElementById('close-mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+        });
+
+        closeMobileMenu.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
+
+        // Language dropdown
+        const languageDropdowns = document.querySelectorAll('.language-dropdown');
+
+        languageDropdowns.forEach(dropdown => {
+            const button = dropdown.querySelector('button');
+            const options = dropdown.querySelector('.language-options');
+
+            button.addEventListener('click', (e) => {
+                e.stopPropagation();
+                options.classList.toggle('hidden');
+            });
+        });
+
+        // Close language dropdown when clicking elsewhere
+        document.addEventListener('click', () => {
+            document.querySelectorAll('.language-options').forEach(options => {
+                options.classList.add('hidden');
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+
+                    // Close mobile menu if open
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
