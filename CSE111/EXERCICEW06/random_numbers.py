@@ -52,15 +52,15 @@ def main():
    words_list = []
    print(f"Words list :{words_list}")
 
-    #append one random word to the list 
-    # and print the list
-    append_random_words(words_list, 1)
-    print(f"Words list :{words_list}")
+   #append one random word to the list 
+   # and print the list
+   append_random_words(words_list, 1)
+   print(f"Words list :{words_list}")
    
    #append three random words to the list
    # and print the list
-    append_random_words(words_list, 1)
-    print(f"Words list :{words_list}")
+   append_random_words(words_list, 3)
+   print(f"Words list :{words_list}")
 
 if __name__ == "__main__":
     main()

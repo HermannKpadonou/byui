@@ -11,16 +11,19 @@ def test_append_random_numbers():
     Return: nothing
     """
     # Create an empty list named numbers_list.
-    numbers_list = []
+    numbers_list = [16.2, 75.1, 52.3]
 
     # Verify that the length of the empty list is zero.
-    assert len(numbers_list) == 0
+    assert len(numbers_list) == 3
 
     # Call the append_random_numbers function to append one number.
-    append_random_numbers(numbers_list)
+    append_random_numbers(numbers_list,1)
 
     # Verify that the numbers list now has one element.
-    assert len(numbers_list) == 1
+    assert len(numbers_list) == 4
+
+    append_random_numbers(numbers_list, 3)
+    assert len(numbers_list) == 7
 
     # Verify that all the elements in the numbers list
     # are floating point numbers.
@@ -31,7 +34,7 @@ def test_append_random_numbers():
     append_random_numbers(numbers_list, 3)
 
     # Verify that the numbers list now has four elements.
-    assert len(numbers_list) == 4
+    assert len(numbers_list) == 10
 
     # Verify that all the elements in the numbers list
     # are floating point numbers.
@@ -62,4 +65,5 @@ def test_append_random_numbers():
 
 # Call the main function that is part of pytest so that the
 # computer will execute the test functions in this file.
-pytest.main(["-v", "--tb=line", "-rN", __file__])
+if __name__ == "__main__":
+    pytest.main(["-v", "--tb=line", "-rN", __file__])
