@@ -9,16 +9,32 @@ CSE 111 Proposal for a Student Chosen Program
     answer each of the following questions to the best of your
     knowledge.)
 
-1. What is the title of your program?
+1. What is the title of your program? AgriPlan : Phytosanitary treatment management system
 
 2. What real-world problem will your program address or help to solve?
+   My program will help farmers solve a simple but important problem: knowing exactly how much product (like a pesticide) to use on their field.
+        -If they use too much, they waste money and pollute the environment.
+        -If they use too little, the treatment doesn't work, and they might lose their crops.
+   My program will calculate the perfect dose. It will also save a record of what was done (which product, when, how much) to remember for later.
 
 3. What will you learn from developing this program?
 
+   By creating this program, I will learn:
+        -How to organize my code: Using functions to keep my program clean and easy to read.
+        -How to use files: Reading information from a file (the list of products) and writing to another file (the history of treatments). I will use the CSV format, which is like a simple spreadsheet.
+        -How to write tests: Writing small, automatic tests to make sure my calculations are always correct.
+        -How to use Python's tools: Using built-in modules like csv (for files) and datetime (for dates).
+
 4. What Python modules will your program use?
 
-    (Some examples are: csv, datetime, functools, matplotlib, math,
+(Some examples are: csv, datetime, functools, matplotlib, math,
     pandas, pytest, random, requests, and tkinter.)
+
+    -csv: Read/write product and treatment data.
+    -datetime: Record treatment dates.
+    -pytest: Test critical functions.
+    -math (optional): Advanced calculations.
+
 
 5. List the names of functions you will need?
 
@@ -26,12 +42,21 @@ CSE 111 Proposal for a Student Chosen Program
     don't print results but instead have parameters and return a result.
     Functions that get user input and print results are important and do
     useful work but are not easily reusable.)
+        -calculate_area(length, width):receives the length and width, and returns the area.
+        -calculate_product_dose(area, dose_per_hectare):Receives the area and the dosage, and returns the amount of product to use.
+        -read_products_from_csv(filename):Receives a filename, reads it, and returns the list of products.
 
     (Remember also that it's hard to test functions that get user input
     and print results. It's easy to test functions that don't get user
     input and don't print results but instead have parameters and return
     a result. Therefore, you should write most of your program functions
     to have parameters and return a result.)
+        -main():This is the main function that runs the whole program.
+        -get_user_input():Asks the user questions (field size, product name) and returns their answers.
+        -display_result(area, product_amount):Prints the final result in a clear way for the user.
 
 6. List the names of the test functions you will write.
-
+    I will write one test function for each calculation function to be sure it works correctly.
+        -test_calculate_area():Will check if the area calculation is correct with different numbers.
+        -test_calculate_product_dose() :Will check if the product amount calculation is accurate.
+    These tests will help me be confident that my code works.
