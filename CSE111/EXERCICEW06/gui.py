@@ -8,7 +8,8 @@ def main():
     frm_main = Frame(root)
     frm_main.master.title("gui")
     frm_main.pack(padx=3,pady=3,fill=tk.BOTH,expand=True)
-
+    
+    setup_main(frm_main)
     frm_main.mainloop()
 
 def setup_main(frm):
@@ -26,19 +27,27 @@ def setup_main(frm):
     lbl_roll.grid(row=3, column=0)
 
     def roll_gui(sides, count):
-
-        sum= 0
+        
+        roll_text = ""
+        sum = 0
         for roll in range(count):
             die_roll = random.randint(1, sides)
             sum += die_roll
-            roll_text = f"({die_roll})"
+            roll_text += f"({die_roll})"
         roll_text += f" Total= {sum}"
-        return
+        return roll_text
 
     def roll_action():
-        
-        sides = ent_sides.get()
-        count = ent_count.get()
+        try:
+          sides = ent_sides.get()
+        except ValueError:
+            lbl_roll.config(text="You must enter a valid number of sides")
+            return
+        try:
+            count = ent_count.get()
+        except ValueError:
+            lbl_roll.config(text="You must enter a valid number of gui")
+            return
         lbltext = roll_gui(sides, count)
         lbl_roll.config(text=lbltext)
 
